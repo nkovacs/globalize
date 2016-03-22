@@ -70,6 +70,9 @@ QUnit.module( ".messageFormatter( path )", {
 			},
 			"en-GB": {},
 			fr: {},
+			he: {
+				helloArray: "Hello, {0} & {1}"
+			},
 			pt: {
 				amen: "Amém"
 			},
@@ -196,6 +199,13 @@ QUnit.test( "should support ICU message format", function( assert ) {
 	assert.messageFormatter( "en", "ordinal", {
 		cat: 4,
 	}, "4th category" );
+});
+
+QUnit.test( "should support Bidi structured text", function( assert ) {
+	assert.equal(
+		Globalize( "he" ).messageFormatter( "helloArray", {"setBiDiSupport": true} )( "Beethoven", "Mozart" ),
+		"Hello, \u200FBeethoven\u200F & \u200FMozart\u200F"
+	);
 });
 
 // Reference #473

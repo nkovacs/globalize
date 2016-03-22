@@ -58,10 +58,12 @@ Globalize.loadMessages = function( json ) {
  *
  * @path [String or Array]
  *
+ * @options [object]
+ *
  * Format a message given its path.
  */
 Globalize.messageFormatter =
-Globalize.prototype.messageFormatter = function( path ) {
+Globalize.prototype.messageFormatter = function( path, options ) {
 	var cldr, formatter, message, pluralGenerator, returnFn,
 		args = slice.call( arguments, 0 );
 
@@ -85,6 +87,9 @@ Globalize.prototype.messageFormatter = function( path ) {
 	validateMessageType( path, message );
 
 	var compiler = new messageCompiler( this, Globalize._messageFmts );
+	if ( options && ( options.setBiDiSupport === true ) ) {
+		compiler.setBiDiSupport( true );
+	}
 	var formatterSrc = compiler
 		.compile( message, cldr.locale );
 
@@ -149,7 +154,9 @@ Globalize.prototype.messageFormatter = function( path ) {
  */
 Globalize.formatMessage =
 Globalize.prototype.formatMessage = function( path /* , variables */ ) {
-	return this.messageFormatter( path ).apply( {}, slice.call( arguments, 1 ) );
+	return ( arguments[ 1 ] && arguments[ 1 ].setBiDiSupport === true ) ?
+		this.messageFormatter( path, arguments[ 1 ] ).apply( {}, slice.call( arguments, 2 ) ) :
+		this.messageFormatter( path ).apply( {}, slice.call( arguments, 1 ) );
 };
 
 return Globalize;
