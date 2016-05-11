@@ -138,6 +138,16 @@ Globalize.prototype.dateToPartsFormatter = function( options ) {
 	return returnFn;
 };
 
+[ "date", "time", "datetime" ].map(function( type ) {
+	Globalize.addMessageFormatterFunction( type, function( p ) {
+		var options = {};
+		if ( p ) {
+			options[type] = p;
+		}
+		return this.dateFormatter( options );
+	});
+});
+
 /**
  * .dateParser( options )
  *
