@@ -87,8 +87,11 @@ Globalize.prototype.messageFormatter = function( path ) {
 		this.pluralGenerator() :
 		createErrorPluralModulePresence;
 
+	var dependentFormatters = [];
 	formatter = new MessageFormat( cldr.locale, pluralGenerator, Globalize._messageFmts )
-		.compile( message );
+		.compile( message, null, this, dependentFormatters );
+
+	// TODO: globalize-compiler needs to add dependentFormatters to compiled output
 
 	returnFn = messageFormatterFn( formatter );
 

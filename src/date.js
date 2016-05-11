@@ -153,17 +153,18 @@ Globalize.prototype.parseDate = function( value, options ) {
 	return this.dateParser( options )( value );
 };
 
-Globalize.addMessageFormatterFunction( "date", function( v, lc, p ) {
+Globalize.addMessageFormatterFunction( "date", function( p ) {
 	var options;
 	if ( p ) {
 		options = {
 			date: p
 		};
 	}
-	if ( typeof lc !== "string" ) {
-		lc = lc[0];
-	}
-	return ( new Globalize( lc ) ).formatDate( v, options );
+	var formatter = this.dateFormatter( options );
+
+	return function( v ) {
+		return formatter( v );
+	};
 } );
 
 return Globalize;

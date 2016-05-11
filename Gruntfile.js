@@ -123,7 +123,7 @@ module.exports = function( grunt ) {
 				paths: {
 					cldr: "../external/cldrjs/dist/cldr",
 					"make-plural": "../external/make-plural/make-plural",
-					messageformat: "../external/messageformat/messageformat"
+					messageformat: "../messageformat_hack/messageformat"
 				},
 				skipSemiColonInsertion: true,
 				skipModuleInsertion: true,
