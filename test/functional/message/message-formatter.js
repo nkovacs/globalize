@@ -152,10 +152,6 @@ QUnit.test( "should support ICU message format", function( assert ) {
 	assert.messageFormatter( "en", "greetings/helloArray", "Beethoven", "Hello, Beethoven" );
 	assert.messageFormatter( "en", "greetings/helloArray2", [ "Beethoven", "Mozart" ],
 		"Hello, Beethoven and Mozart" );
-	assert.equal(
-		Globalize( "en" ).messageFormatter( "greetings/helloArray2" )( "Beethoven", "Mozart" ),
-		"Hello, Beethoven and Mozart"
-	);
 	assert.messageFormatter( "en", "greetings/helloName", {
 		name: "Beethoven"
 	}, "Hello, Beethoven" );
@@ -201,9 +197,11 @@ QUnit.test( "should support ICU message format", function( assert ) {
 	}, "4th category" );
 });
 
-QUnit.test( "should support Bidi structured text", function( assert ) {
+QUnit.test( "should support BiDi structured text", function( assert ) {
 	assert.equal(
-		Globalize( "he" ).messageFormatter( "helloArray", {"setBiDiSupport": true} )( "Beethoven", "Mozart" ),
+		Globalize( "he" ).messageFormatter( "helloArray", {
+			setBiDiSupport: true
+		})( "Beethoven", "Mozart" ),
 		"Hello, \u200FBeethoven\u200F & \u200FMozart\u200F"
 	);
 });
@@ -228,8 +226,8 @@ QUnit.test( "should allow for runtime compilation", function( assert ) {
 	util.assertRuntimeBind(
 		assert,
 		Globalize( "en" ).messageFormatter( "amen" ),
-		"b639686813",
-		"Globalize(\"en\").messageFormatter(\"amen\")",
+		"b141291319",
+		"Globalize(\"en\").messageFormatter(\"amen\",{})",
 		function( runtimeArgs ) {
 			assert.equal(
 				runtimeArgs[ 0 ].toString(),
@@ -241,8 +239,8 @@ QUnit.test( "should allow for runtime compilation", function( assert ) {
 	util.assertRuntimeBind(
 		assert,
 		Globalize( "en" ).messageFormatter( "like" ),
-		"b328290139",
-		"Globalize(\"en\").messageFormatter(\"like\")",
+		"b452335545",
+		"Globalize(\"en\").messageFormatter(\"like\",{})",
 		function( runtimeArgs ) {
 			assert.equal(
 				runtimeArgs[ 0 ].toString(),
