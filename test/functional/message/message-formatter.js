@@ -71,7 +71,7 @@ QUnit.module( ".messageFormatter( path )", {
 			"en-GB": {},
 			fr: {},
 			he: {
-				helloArray: "Hello, {0} & {1}"
+				helloArray: "Hello, {0} & {1} & {2}"
 			},
 			pt: {
 				amen: "Amém"
@@ -201,8 +201,8 @@ QUnit.test( "should support BiDi structured text", function( assert ) {
 	assert.equal(
 		Globalize( "he" ).messageFormatter( "helloArray", {
 			setBiDiSupport: true
-		})( "Beethoven", "Mozart" ),
-		"Hello, \u200FBeethoven\u200F & \u200FMozart\u200F"
+		})( "Beethoven", "Mozart", "שלום" ),
+		"Hello, \u200FBeethoven\u200F & \u200FMozart\u200F & \u200fשלום\u200f"
 	);
 });
 
