@@ -1,6 +1,6 @@
 define(function() {
 
-return function( cldr, messageformatter ) {
+return function( cldr, messageformatter, embeddedFormatters ) {
 	var locale = cldr.locale,
 		origToString = messageformatter.toString;
 
@@ -21,6 +21,12 @@ return function( cldr, messageformatter ) {
 
 		if ( /select\(/.test( output ) ) {
 			args.select = "messageFormat.select";
+		}
+
+		if ( embeddedFormatters.length ) {
+			args.fmtfns = "[" + embeddedFormatters.map( function( fn ) {
+				return fn.generatorString();
+			} ).join( ", " ) + "]";
 		}
 
 		output.replace( /pluralFuncs(\[([^\]]+)\]|\.([a-zA-Z]+))/, function( match ) {
