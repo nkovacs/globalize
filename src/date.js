@@ -160,11 +160,7 @@ Globalize.addMessageFormatterFunction( "date", function( p ) {
 			date: p
 		};
 	}
-	var formatter = this.dateFormatter( options );
-
-	return function( v ) {
-		return formatter( v );
-	};
+	return this.dateFormatter( options );
 } );
 
 return Globalize;
