@@ -123,7 +123,9 @@ module.exports = function( grunt ) {
 				paths: {
 					cldr: "../external/cldrjs/dist/cldr",
 					"make-plural": "../external/make-plural/make-plural",
-					messageformat: "../messageformat_hack/messageformat"
+					messageformat: "../messageformat_hack/messageformat",
+					"messageformat-parser": "../node_modules/messageformat-parser/parser",
+					"reserved-words": "../node_modules/reserved-words/lib/reserved-words"
 				},
 				skipSemiColonInsertion: true,
 				skipModuleInsertion: true,
@@ -184,69 +186,126 @@ module.exports = function( grunt ) {
 								"}());",
 								"/* jshint ignore:end */"
 							].join( "\n" ) );
+					} else if ( ( /messageformat-parser/.test( id ) ) ) {
 
-					// messageformat
-					} else if ( ( /messageformat/ ).test( id ) ) {
 						return contents
-
-							// Remove browserify wrappers.
-							.replace( /^\(function\(f\)\{if\(typeof exports==="object"&&type.*/, "" )
-							.replace( "},{}],2:[function(require,module,exports){", "" )
-							.replace( /\},\{"\.\/messageformat-parser":1,"make-plural\/plural.*/, "" )
-							.replace( /\},\{\}\]\},\{\},\[2\]\)\(2\)[\s\S]*?$/, "" )
-
-							// Set `MessageFormat.plurals` and remove `make-plural/plurals`
-							// completely. This is populated by Globalize on demand.
-							.replace( /var _cp = \[[\s\S]*?$/, "" )
-							.replace(
-								"MessageFormat.plurals = require('make-plural/plurals')",
-								"MessageFormat.plurals = {}"
-							)
-
-							// Set `MessageFormat._parse`
-							.replace(
-								"MessageFormat._parse = require('./messageformat-parser').parse;",
-								""
-							)
-							.replace( /module\.exports = \(function\(\) \{([\s\S]*?)\n\}\)\(\);/, [
-								"MessageFormat._parse = (function() {",
-								"$1",
-								"}()).parse;"
-							].join( "\n" ) )
-
-							// Remove unused code.
-							.replace( /if \(!pluralFunc\) \{\n[\s\S]*?\n  \}/, "" )
-							.replace( /if \(!locale\) \{\n[\s\S]*?  \}\n/, "this.lc = [locale];" )
-							.replace( /(MessageFormat\.formatters) = \{[\s\S]*?\n\};/, "$1 = {};" )
-							.replace( /MessageFormat\.prototype\.setIntlSupport[\s\S]*?\n\};/, "" )
-
-							// Wrap everything into a var assignment.
-							.replace( "module.exports = MessageFormat;", "" )
 							.replace( /^/, [
-								"var MessageFormat;",
-								"/* jshint ignore:start */",
-								"MessageFormat = (function() {"
+								"var Parser;",
+								"/* jshint ignore:start */\n",
+								"Parser = (function() {"
 							].join( "\n" ) )
+							.replace( "module.exports = ", "return " )
 							.replace( /$/, [
-								"return MessageFormat;",
 								"}());",
 								"/* jshint ignore:end */"
 							].join( "\n" ) );
 
+					} else if ( ( /reserved-words/.test( id ) ) ) {
+
+						return contents
+							.replace( /^/, [
+								"var reserved;",
+								"/* jshint ignore:start */\n",
+								"reserved = (function() {",
+								"var exports = {};"
+							].join( "\n" ) )
+							.replace( "var assert = require\('assert'\);", "" )
+							.replace( /^\s*assert\(.*;\s*$/gm, "" )
+							.replace( /$/, [
+								"return exports;",
+								"}());",
+								"/* jshint ignore:end */"
+							].join( "\n" ) );
+
+					// message/compiler
+//					} else if ( ( /message\/compiler/ ).test( id ) ) {
+//
+//						messageformatParser = require( "messageformat-parser" );
+//						reservedWords = require( "reserved-words" );
+//						console.log( messageformatParser.SyntaxError.toString() );
+//						contents = contents
+//							.replace( "var Parser = {};", [
+//								"/* jshint ignore:start */",
+//								"var Parser = (function() {",
+//								messageformatParser.toString(),
+//								"return {SyntaxError: peg$SyntaxError, parse: peg$parse};",
+//								"}());",
+//								"/* jshint ignore:end */"
+//							].join( "\n" ) )
+//							.replace( "var reserved = {}", [
+//								"/* jshint ignore:start */",
+//								"var reserved = (function() {",
+//								reservedWords.toString(),
+//								"return {check: exports.check};",
+//								"}());",
+//								"/* jshint ignore:end */"
+//							] )
+//						;
+
+					// messageformat
+//			} else if ( ( /messageformat/ ).test( id ) ) {
+//				return contents
+//
+//					// Remove browserify wrappers.
+//					.replace( /^\(function\(f\)\{if\(typeof exports==="object"&&type.*/, "" )
+//					.replace( "},{}],2:[function(require,module,exports){", "" )
+//					.replace( /\},\{"\.\/messageformat-parser":1,"make-plural\/plural.*/, "" )
+//					.replace( /\},\{\}\]\},\{\},\[2\]\)\(2\)[\s\S]*?$/, "" )
+//
+//					// Set `MessageFormat.plurals` and remove `make-plural/plurals`
+//					// completely. This is populated by Globalize on demand.
+//					.replace( /var _cp = \[[\s\S]*?$/, "" )
+//					.replace(
+//						"MessageFormat.plurals = require('make-plural/plurals')",
+//						"MessageFormat.plurals = {}"
+//					)
+//
+//					// Set `MessageFormat._parse`
+//					.replace(
+//						"MessageFormat._parse = require('./messageformat-parser').parse;",
+//						""
+//					)
+//					.replace( /module\.exports = \(function\(\) \{([\s\S]*?)\n\}\)\(\);/, [
+//						"MessageFormat._parse = (function() {",
+//						"$1",
+//						"}()).parse;"
+//					].join( "\n" ) )
+//
+//					// Remove unused code.
+//					.replace( /if \(!pluralFunc\) \{\n[\s\S]*?\n  \}/, "" )
+//					.replace( /if \(!locale\) \{\n[\s\S]*?  \}\n/, "this.lc = [locale];" )
+//					.replace( /(MessageFormat\.formatters) = \{[\s\S]*?\n\};/, "$1 = {};" )
+//					.replace( /MessageFormat\.prototype\.setIntlSupport[\s\S]*?\n\};/, "" )
+//
+//					// Wrap everything into a var assignment.
+//					.replace( "module.exports = MessageFormat;", "" )
+//					.replace( /^/, [
+//						"var MessageFormat;",
+//						"/* jshint ignore:start */",
+//						"MessageFormat = (function() {"
+//					].join( "\n" ) )
+//					.replace( /$/, [
+//						"return MessageFormat;",
+//						"}());",
+//						"/* jshint ignore:end */"
+//					].join( "\n" ) );
+
 					// message-runtime
-					} else if ( ( /message-runtime/ ).test( id ) ) {
-						messageformat = require( "./external/messageformat/messageformat" );
-						delete messageformat.prototype.runtime.fmt;
-						delete messageformat.prototype.runtime.pluralFuncs;
-						contents = contents.replace( "Globalize._messageFormat = {};", [
-							"/* jshint ignore:start */",
-							"Globalize._messageFormat = (function() {",
-							messageformat.prototype.runtime.toString(),
-							"return {number: number, plural: plural, select: select};",
-							"}());",
-							"/* jshint ignore:end */"
-						].join( "\n" ) );
+//			} else if ( ( /message-runtime/ ).test( id ) ) {
+//				messageformat = require( "./external/messageformat/messageformat" );
+//				delete messageformat.prototype.runtime.fmt;
+//				delete messageformat.prototype.runtime.pluralFuncs;
+//				contents = contents.replace( "Globalize._messageFormat = {};", [
+//					"/* jshint ignore:start */",
+//					"Globalize._messageFormat = (function() {",
+//					messageformat.prototype.runtime.toString(),
+//					"return {number: number, plural: plural, select: select};",
+//					"}());",
+//					"/* jshint ignore:end */"
+//				].join( "\n" ) );
 					}
+
+					messageformat = "I don't care";
 
 					// 1, and 2: Remove define() wrap.
 					// 3: Remove empty define()'s.
