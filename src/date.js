@@ -83,6 +83,16 @@ Globalize.prototype.dateFormatter = function( options ) {
 	return returnFn;
 };
 
+[ "date", "time", "datetime" ].map(function( type ) {
+	Globalize.addMessageFormatterFunction( type, function( p ) {
+		var options = {};
+		if ( p ) {
+			options[type] = p;
+		}
+		return this.dateFormatter( options );
+	});
+});
+
 /**
  * .dateParser( options )
  *
@@ -152,16 +162,6 @@ Globalize.prototype.parseDate = function( value, options ) {
 
 	return this.dateParser( options )( value );
 };
-
-Globalize.addMessageFormatterFunction( "date", function( p ) {
-	var options;
-	if ( p ) {
-		options = {
-			date: p
-		};
-	}
-	return this.dateFormatter( options );
-} );
 
 return Globalize;
 
