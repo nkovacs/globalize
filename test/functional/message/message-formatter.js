@@ -223,7 +223,7 @@ QUnit.test( "should allow for runtime compilation", function( assert ) {
 		function( runtimeArgs ) {
 			assert.equal(
 				runtimeArgs[ 0 ].toString(),
-				"(function(  ) {\n  return function (d) { return \"Amen\"; }\n})()"
+				"(function(  ) {\n  return function(d) { return \"Amen\"; }\n})"
 			);
 		}
 	);
@@ -236,7 +236,7 @@ QUnit.test( "should allow for runtime compilation", function( assert ) {
 		function( runtimeArgs ) {
 			assert.equal(
 				runtimeArgs[ 0 ].toString(),
-				"(function( number, plural, en ) {\n  return function (d) { return plural(d.count, 1, en, { \"0\": \"Be the first to like this\", \"1\": \"You liked this\", one: \"You and \" + d.someone + \" liked this\", other: \"You and \" + number(d.count, \"count\", 1) + \" others liked this\" }); }\n})(messageFormat.number, messageFormat.plural, Globalize(\"en\").pluralGenerator( { type: \"cardinal\" } ))"
+				"(function( en ) {\nvar number = messageFormat.number;\nvar plural = messageFormat.plural;\n  return function(d) { return plural(d.count, 1, en, { \"0\": \"Be the first to like this\", \"1\": \"You liked this\", one: \"You and \" + d.someone + \" liked this\", other: \"You and \" + number(d.count, \"count\", 1) + \" others liked this\" }); }\n})"
 			);
 		}
 	);
