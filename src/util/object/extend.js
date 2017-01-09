@@ -1,6 +1,4 @@
-define(function() {
-
-return function() {
+export default function() {
 	var destination = arguments[ 0 ],
 		sources = [].slice.call( arguments, 1 );
 
@@ -13,5 +11,3 @@ return function() {
 
 	return destination;
 };
-
-});

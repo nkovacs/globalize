@@ -1,6 +1,4 @@
-define(function() {
-
-return function( object ) {
+export default function( object ) {
 	var i,
 		result = [];
 
@@ -10,5 +8,3 @@ return function( object ) {
 
 	return result;
 };
-
-});

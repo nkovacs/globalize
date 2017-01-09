@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * NumberingSystem( cldr )
  *
@@ -7,7 +5,7 @@ define(function() {
  * - http://cldr.unicode.org/index/bcp47-extension
  * - http://www.unicode.org/reports/tr35/#u_Extension
  */
-return function( cldr ) {
+export default function( cldr ) {
 	var nu = cldr.attributes[ "u-nu" ];
 
 	if ( nu ) {
@@ -28,5 +26,3 @@ return function( cldr ) {
 	// Return the default numberingSystem.
 	return cldr.main( "numbers/defaultNumberingSystem" );
 };
-
-});

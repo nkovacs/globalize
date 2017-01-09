@@ -73,7 +73,9 @@
     "cldrjs": "^0.4.6"
   },
   "devDependencies": {
+    "cldr-data": "^30.0.2",
     "cldr-data-downloader": "^0.2.5",
+    "es5-shim": "^3.4.0",
     "grunt": "0.4.5",
     "grunt-check-dependencies": "0.6.0",
     "grunt-commitplease": "0.0.5",
@@ -88,10 +90,15 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-git-authors": "^3.1.0",
     "grunt-jscs": "1.8.0",
+    "grunt-rollup": "^1.0.1",
     "gzip-js": "0.3.2",
+    "make-plural": "^3.0.6",
     "matchdep": "0.3.0",
     "messageformat-parser": "^1.0.0",
-    "reserved-words": "^0.1.1"
+    "qunitjs": "^2.1.1",
+    "reserved-words": "^0.1.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0"
   },
   "commitplease": {
     "nohook": true

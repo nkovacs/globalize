@@ -1,11 +1,8 @@
-define([
-	"./first-day-of-week",
-	"./pattern-re",
-	"../common/create-error/unsupported-feature",
-	"../number/symbol",
-	"../util/string/pad"
-], function( dateFirstDayOfWeek, datePatternRe, createErrorUnsupportedFeature, numberSymbol,
-	stringPad ) {
+import dateFirstDayOfWeek from "./first-day-of-week";
+import datePatternRe from "./pattern-re";
+import createErrorUnsupportedFeature from "../common/create-error/unsupported-feature";
+import numberSymbol from "../number/symbol";
+import stringPad from "../util/string/pad";
 
 /**
  * properties( pattern, cldr )
@@ -19,7 +16,7 @@ define([
  *
  * TODO Support other calendar types.
  */
-return function( pattern, cldr ) {
+export default function( pattern, cldr ) {
 	var properties = {
 			numberFormatters: {},
 			pattern: pattern,
@@ -238,5 +235,3 @@ return function( pattern, cldr ) {
 
 	return properties;
 };
-
-});

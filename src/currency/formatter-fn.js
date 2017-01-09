@@ -1,10 +1,8 @@
-define([
-	"../common/validate/parameter-presence",
-	"../common/validate/parameter-type/number",
-	"./name-format"
-], function( validateParameterPresence, validateParameterTypeNumber, currencyNameFormat ) {
+import validateParameterPresence from "../common/validate/parameter-presence";
+import validateParameterTypeNumber from "../common/validate/parameter-type/number";
+import currencyNameFormat from "./name-format";
 
-return function( numberFormatter, pluralGenerator, properties ) {
+export default function( numberFormatter, pluralGenerator, properties ) {
 	var fn;
 
 	// Return formatter when style is "code" or "name".
@@ -28,5 +26,3 @@ return function( numberFormatter, pluralGenerator, properties ) {
 
 	return fn;
 };
-
-});

@@ -1,9 +1,5 @@
-define([
-	"cldr"
-], function( Cldr ) {
+import Cldr from "cldr";
 
-return function( localeOrCldr ) {
+export default function( localeOrCldr ) {
 	return localeOrCldr instanceof Cldr ? localeOrCldr : new Cldr( localeOrCldr );
 };
-
-});

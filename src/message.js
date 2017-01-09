@@ -1,28 +1,22 @@
-define([
-	"cldr",
-	"./common/create-error",
-	"./common/create-error/plural-module-presence",
-	"./common/runtime-bind",
-	"./common/validate/default-locale",
-	"./common/validate/message-bundle",
-	"./common/validate/message-presence",
-	"./common/validate/message-type",
-	"./common/validate/parameter-presence",
-	"./common/validate/parameter-type",
-	"./common/validate/parameter-type/plain-object",
-	"./core",
-	"./message/compiler",
-	"./message/formatter-runtime",
-	"./message/formatter-fn",
-	"./message/formatter-runtime-bind",
-	"./util/always-array",
+import Globalize from "./core";
+import Cldr from "cldr";
+import createError from "./common/create-error";
+import createErrorPluralModulePresence from "./common/create-error/plural-module-presence";
+import runtimeBind from "./common/runtime-bind";
+import validateDefaultLocale from "./common/validate/default-locale";
+import validateMessageBundle from "./common/validate/message-bundle";
+import validateMessagePresence from "./common/validate/message-presence";
+import validateMessageType from "./common/validate/message-type";
+import validateParameterPresence from "./common/validate/parameter-presence";
+import validateParameterType from "./common/validate/parameter-type";
+import validateParameterTypePlainObject from "./common/validate/parameter-type/plain-object";
+import messageCompiler from "./message/compiler";
+import messageFormatterRuntime from "./message/formatter-runtime";
+import messageFormatterFn from "./message/formatter-fn";
+import messageFormatterRuntimeBind from "./message/formatter-runtime-bind";
+import alwaysArray from "./util/always-array";
 
-	"cldr/event"
-], function( Cldr, createError, createErrorPluralModulePresence, runtimeBind,
-	validateDefaultLocale, validateMessageBundle, validateMessagePresence, validateMessageType,
-	validateParameterPresence, validateParameterType, validateParameterTypePlainObject, Globalize,
-	messageCompiler, messageFormatterRuntime, messageFormatterFn, messageFormatterRuntimeBind,
-	alwaysArray ) {
+import "cldr/event";
 
 var slice = [].slice;
 
@@ -152,6 +146,4 @@ Globalize.prototype.formatMessage = function( path /* , variables */ ) {
 	return this.messageFormatter( path ).apply( {}, slice.call( arguments, 1 ) );
 };
 
-return Globalize;
-
-});
+export default Globalize;

@@ -1,6 +1,4 @@
-define(function() {
-
-return {
+export default {
 	".": "decimal",
 	",": "group",
 	"%": "percentSign",
@@ -9,5 +7,3 @@ return {
 	"E": "exponential",
 	"\u2030": "perMille"
 };
-
-});

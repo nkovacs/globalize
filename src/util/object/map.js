@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * objectMap( object, fn)
  *
@@ -7,7 +5,7 @@ define(function() {
  *
  * - fn( pair ) => pair
  */
-return function( object, fn ) {
+export default function( object, fn ) {
 	return Object.keys( object ).map(function( key ) {
 		return fn([ key, object[ key ] ]);
 	}).reduce(function( object, pair ) {
@@ -15,5 +13,3 @@ return function( object, fn ) {
 		return object;
 	}, {});
 };
-
-});

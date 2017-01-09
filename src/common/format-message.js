@@ -1,6 +1,4 @@
-define([
-	"../util/to-string"
-], function( toString ) {
+import toString from "../util/to-string"
 
 /**
  * formatMessage( message, data )
@@ -20,7 +18,7 @@ define([
  *     email: "bar@baz.qux"
  *   }); // Foo <bar@baz.qux>
  */
-return function( message, data ) {
+export default function( message, data ) {
 
 	// Replace {attribute}'s
 	message = message.replace( /{[0-9a-zA-Z-_. ]+}/g, function( name ) {
@@ -30,5 +28,3 @@ return function( message, data ) {
 
 	return message;
 };
-
-});

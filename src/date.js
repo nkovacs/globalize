@@ -1,27 +1,22 @@
-define([
-	"cldr",
-	"./common/runtime-bind",
-	"./common/validate/cldr",
-	"./common/validate/default-locale",
-	"./common/validate/parameter-presence",
-	"./common/validate/parameter-type/date",
-	"./common/validate/parameter-type/plain-object",
-	"./common/validate/parameter-type/string",
-	"./core",
-	"./date/expand-pattern",
-	"./date/formatter-fn",
-	"./date/format-properties",
-	"./date/parser-fn",
-	"./date/parse-properties",
-	"./date/tokenizer-properties",
+import Globalize from "./core";
+import runtimeBind from "./common/runtime-bind";
+import validateCldr from "./common/validate/cldr";
+import validateDefaultLocale from "./common/validate/default-locale";
+import validateParameterPresence from "./common/validate/parameter-presence";
+import validateParameterTypeDate from "./common/validate/parameter-type/date";
+import validateParameterTypePlainObject from "./common/validate/parameter-type/plain-object";
+import validateParameterTypeString from "./common/validate/parameter-type/string";
+import dateExpandPattern from "./date/expand-pattern";
+import dateFormatterFn from "./date/formatter-fn";
+import dateFormatProperties from "./date/format-properties";
+import dateParserFn from "./date/parser-fn";
+import dateParseProperties from "./date/parse-properties";
+import dateTokenizerProperties from "./date/tokenizer-properties";
 
-	"cldr/event",
-	"cldr/supplemental",
-	"./number"
-], function( Cldr, runtimeBind, validateCldr, validateDefaultLocale, validateParameterPresence,
-	validateParameterTypeDate, validateParameterTypePlainObject, validateParameterTypeString,
-	Globalize, dateExpandPattern, dateFormatterFn, dateFormatProperties, dateParserFn,
-	dateParseProperties, dateTokenizerProperties ) {
+import "cldr";
+import "cldr/event";
+import "cldr/supplemental";
+import "./number";
 
 function validateRequiredCldr( path, value ) {
 	validateCldr( path, value, {
@@ -163,6 +158,4 @@ Globalize.prototype.parseDate = function( value, options ) {
 	return this.dateParser( options )( value );
 };
 
-return Globalize;
-
-});
+export default Globalize;

@@ -1,9 +1,7 @@
-define([
-	"cldr",
-	"../parameter-type"
-], function( Cldr, validateParameterType ) {
+import Cldr from "cldr";
+import validateParameterType from "../parameter-type";
 
-return function( value, name ) {
+export default function( value, name ) {
 	validateParameterType(
 		value,
 		name,
@@ -11,5 +9,3 @@ return function( value, name ) {
 		"String or Cldr instance"
 	);
 };
-
-});

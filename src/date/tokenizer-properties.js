@@ -1,8 +1,6 @@
-define([
-	"./pattern-re",
-	"../common/create-error/unsupported-feature",
-	"../number/symbol"
-], function( datePatternRe, createErrorUnsupportedFeature, numberSymbol ) {
+import datePatternRe from "./pattern-re";
+import createErrorUnsupportedFeature from "../common/create-error/unsupported-feature";
+import numberSymbol from "../number/symbol";
 
 /**
  * tokenizerProperties( pattern, cldr )
@@ -13,7 +11,7 @@ define([
  *
  * Return Object with data that will be used by tokenizer.
  */
-return function( pattern, cldr ) {
+export default function( pattern, cldr ) {
 	var properties = {
 			pattern: pattern,
 			timeSeparator: numberSymbol( "timeSeparator", cldr )
@@ -151,5 +149,3 @@ return function( pattern, cldr ) {
 
 	return properties;
 };
-
-});

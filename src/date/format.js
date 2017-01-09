@@ -1,14 +1,11 @@
-define([
-	"./day-of-week",
-	"./day-of-year",
-	"./milliseconds-in-day",
-	"./pattern-re",
-	"./start-of",
-	"./timezone-hour-format",
-	"./week-days",
-	"../util/remove-literal-quotes"
-], function( dateDayOfWeek, dateDayOfYear, dateMillisecondsInDay, datePatternRe, dateStartOf,
-	dateTimezoneHourFormat, dateWeekDays, removeLiteralQuotes ) {
+import dateDayOfWeek from "./day-of-week";
+import dateDayOfYear from "./day-of-year";
+import dateMillisecondsInDay from "./milliseconds-in-day";
+import datePatternRe from "./pattern-re";
+import dateStartOf from "./start-of";
+import dateTimezoneHourFormat from "./timezone-hour-format";
+import dateWeekDays from "./week-days";
+import removeLiteralQuotes from "../util/remove-literal-quotes";
 
 /**
  * format( date, properties )
@@ -21,7 +18,7 @@ define([
  *
  * Disclosure: this function borrows excerpts of dojo/date/locale.
  */
-return function( date, numberFormatters, properties ) {
+export default function( date, numberFormatters, properties ) {
 	var timeSeparator = properties.timeSeparator;
 
 	return properties.pattern.replace( datePatternRe, function( current ) {
@@ -263,5 +260,3 @@ return function( date, numberFormatters, properties ) {
 		return ret;
 	});
 };
-
-});

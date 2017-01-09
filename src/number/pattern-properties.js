@@ -1,7 +1,5 @@
-define([
-	"./pattern-re",
-	"../common/create-error/unsupported-feature"
-], function( numberPatternRe, createErrorUnsupportedFeature ) {
+import numberPatternRe from "./pattern-re";
+import createErrorUnsupportedFeature from "../common/create-error/unsupported-feature";
 
 /**
  * format( number, pattern )
@@ -13,7 +11,7 @@ define([
  * Return the formatted number.
  * ref: http://www.unicode.org/reports/tr35/tr35-numbers.html
  */
-return function( pattern ) {
+export default function( pattern ) {
 	var aux1, aux2, fractionPattern, integerFractionOrSignificantPattern, integerPattern,
 		maximumFractionDigits, maximumSignificantDigits, minimumFractionDigits,
 		minimumIntegerDigits, minimumSignificantDigits, padding, prefix, primaryGroupingSize,
@@ -129,5 +127,3 @@ return function( pattern ) {
 		suffix
 	];
 };
-
-});

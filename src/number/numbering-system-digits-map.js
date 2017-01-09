@@ -1,7 +1,5 @@
-define([
-	"./numbering-system",
-	"../common/create-error/unsupported-feature"
-], function( numberNumberingSystem, createErrorUnsupportedFeature ) {
+import numberNumberingSystem from "./numbering-system";
+import createErrorUnsupportedFeature from "../common/create-error/unsupported-feature";
 
 /**
  * nuMap( cldr )
@@ -10,7 +8,7 @@ define([
  *
  * Return digits map if numbering system is different than `latn`.
  */
-return function( cldr ) {
+export default function( cldr ) {
 	var aux,
 		nu = numberNumberingSystem( cldr );
 
@@ -26,5 +24,3 @@ return function( cldr ) {
 
 	return aux._digits;
 };
-
-});

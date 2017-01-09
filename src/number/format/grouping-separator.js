@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * goupingSeparator( number, primaryGroupingSize, secondaryGroupingSize )
  *
@@ -11,7 +9,7 @@ define(function() {
  *
  * Return the formatted number with group separator.
  */
-return function( number, primaryGroupingSize, secondaryGroupingSize ) {
+export default function( number, primaryGroupingSize, secondaryGroupingSize ) {
 	var index,
 		currentGroupingSize = primaryGroupingSize,
 		ret = "",
@@ -34,5 +32,3 @@ return function( number, primaryGroupingSize, secondaryGroupingSize ) {
 	number[ 0 ] = number[ 0 ].slice( 0, index ) + ( ret.length ? sep : "" ) + ret;
 	return number.join( "." );
 };
-
-});

@@ -1,6 +1,4 @@
-define([], function() {
-
-return function( fn ) {
+export default function( fn ) {
 	if ( fn.name !== undefined ) {
 		return fn.name;
 	}
@@ -12,5 +10,3 @@ return function( fn ) {
 		return matches[ 1 ];
 	}
 };
-
-});

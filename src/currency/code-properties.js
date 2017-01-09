@@ -1,15 +1,13 @@
-define([
-	"./supplemental-override",
-	"./unit-patterns",
-	"../number/pattern"
-], function( currencySupplementalOverride, currencyUnitPatterns, numberPattern ) {
+import currencySupplementalOverride from "./supplemental-override";
+import currencyUnitPatterns from "./unit-patterns";
+import numberPattern from "../number/pattern";
 
 /**
  * codeProperties( currency, cldr )
  *
  * Return number pattern with the appropriate currency code in as literal.
  */
-return function( currency, cldr ) {
+export default function( currency, cldr ) {
 	var pattern = numberPattern( "decimal", cldr );
 
 	// The number of decimal places and the rounding for each currency is not locale-specific. Those
@@ -22,5 +20,3 @@ return function( currency, cldr ) {
 		unitPatterns: currencyUnitPatterns( cldr )
 	};
 };
-
-});

@@ -1,13 +1,10 @@
-define([
-	"./is-leap-year",
-	"./last-day-of-month",
-	"./pattern-re",
-	"./start-of",
-	"../common/create-error/unsupported-feature",
-	"../util/date/set-month",
-	"../util/out-of-range"
-], function( dateIsLeapYear, dateLastDayOfMonth, datePatternRe, dateStartOf,
-	createErrorUnsupportedFeature, dateSetMonth, outOfRange ) {
+import dateIsLeapYear from "./is-leap-year";
+import dateLastDayOfMonth from "./last-day-of-month";
+import datePatternRe from "./pattern-re";
+import dateStartOf from "./start-of";
+import createErrorUnsupportedFeature from "../common/create-error/unsupported-feature";
+import dateSetMonth from "../util/date/set-month";
+import outOfRange from "../util/out-of-range";
 
 /**
  * parse( value, tokens, properties )
@@ -20,7 +17,7 @@ define([
  *
  * ref: http://www.unicode.org/reports/tr35/tr35-dates.html#Date_Format_Patterns
  */
-return function( value, tokens, properties ) {
+export default function( value, tokens, properties ) {
 	var amPm, day, daysOfYear, month, era, hour, hour12, timezoneOffset, valid,
 		YEAR = 0,
 		MONTH = 1,
@@ -283,5 +280,3 @@ return function( value, tokens, properties ) {
 
 	return date;
 };
-
-});

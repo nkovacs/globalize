@@ -1,25 +1,22 @@
-define([
-	"./core",
-	"./common/runtime-bind",
-	"./common/validate/cldr",
-	"./common/validate/default-locale",
-	"./common/validate/parameter-presence",
-	"./common/validate/parameter-type/currency",
-	"./common/validate/parameter-type/number",
-	"./common/validate/parameter-type/plain-object",
-	"./currency/code-properties",
-	"./currency/formatter-fn",
-	"./currency/name-properties",
-	"./currency/symbol-properties",
-	"./util/object/omit",
+import Globalize from "./core";
+import runtimeBind from "./common/runtime-bind";
+import validateCldr from "./common/validate/cldr";
+import validateDefaultLocale from "./common/validate/default-locale";
+import validateParameterPresence from "./common/validate/parameter-presence";
+import validateParameterTypeCurrency from "./common/validate/parameter-type/currency";
+import validateParameterTypeNumber from "./common/validate/parameter-type/number";
+import validateParameterTypePlainObject from "./common/validate/parameter-type/plain-object";
+import currencyCodeProperties from "./currency/code-properties";
+import currencyFormatterFn from "./currency/formatter-fn";
+import currencyNameProperties from "./currency/name-properties";
+import currencySymbolProperties from "./currency/symbol-properties";
+import objectOmit from "./util/object/omit";
 
-	"./number",
-	"cldr/event",
-	"cldr/supplemental"
-], function( Globalize, runtimeBind, validateCldr, validateDefaultLocale, validateParameterPresence,
-	validateParameterTypeCurrency, validateParameterTypeNumber, validateParameterTypePlainObject,
-	currencyCodeProperties, currencyFormatterFn, currencyNameProperties, currencySymbolProperties,
-	objectOmit ) {
+
+import "./number";
+import "cldr";
+import "cldr/event";
+import "cldr/supplemental";
 
 function validateRequiredCldr( path, value ) {
 	validateCldr( path, value, {
@@ -149,6 +146,4 @@ Globalize.parseCurrency =
 Globalize.prototype.parseCurrency = function( /* value, currency, options */ ) {
 };
 
-return Globalize;
-
-});
+export default Globalize;

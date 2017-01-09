@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * lastDayOfMonth( date )
  *
@@ -7,8 +5,6 @@ define(function() {
  *
  * Return the last day of the given date's month
  */
-return function( date ) {
+export default function( date ) {
 	return new Date( date.getFullYear(), date.getMonth() + 1, 0 ).getDate();
 };
-
-});

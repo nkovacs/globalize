@@ -1,6 +1,4 @@
-define([
-	"./set-date"
-], function( dateSetDate ) {
+import dateSetDate from "./set-date";
 
 /**
  * Differently from native date.setMonth(), this function adjusts date if
@@ -9,12 +7,10 @@ define([
  * setMonth( Jan31Date, 1 ): a "Feb 28" date.
  * setDate( Jan31Date, 8 ): a "Sep 30" date.
  */
-return function( date, month ) {
+export default function( date, month ) {
 	var originalDate = date.getDate();
 
 	date.setDate( 1 );
 	date.setMonth( month );
 	dateSetDate( date, originalDate );
 };
-
-});

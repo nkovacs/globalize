@@ -1,6 +1,4 @@
-define([
-	"./truncate"
-], function( numberTruncate ) {
+import numberTruncate from "./truncate";
 
 /**
  * round( method )
@@ -25,7 +23,7 @@ define([
  *   Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
  *   Ref: #376
  */
-return function( method ) {
+export default function( method ) {
 	method = method || "round";
 	method = method === "truncate" ? numberTruncate : Math[ method ];
 
@@ -84,5 +82,3 @@ return function( method ) {
 		return +( value[ 0 ] + "e" + value[ 1 ] );
 	};
 };
-
-});

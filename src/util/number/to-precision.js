@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * toPrecision( number, precision, round )
  *
@@ -11,7 +9,7 @@ define(function() {
  *
  * Return number.toPrecision( precision ) using the given round function.
  */
-return function( number, precision, round ) {
+export default function( number, precision, round ) {
 	var roundOrder;
 
 	// Get number at two extra significant figure precision.
@@ -23,5 +21,3 @@ return function( number, precision, round ) {
 
 	return round( number, { exponent: roundOrder } );
 };
-
-});

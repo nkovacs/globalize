@@ -1,8 +1,6 @@
-define([
-    "../core",
-    "messageformat-parser",
-    "reserved-words"
-], function( Globalize, Parser, reserved ) {
+import Globalize from "../core";
+import Parser from "messageformat-parser";
+import reserved from "reserved-words";
 
 /** Creates a new message compiler.
  *
@@ -202,6 +200,4 @@ Compiler.prototype.compile = function( src, lc ) {
     return "function(d) { return " + ( r.join( " + " ) || "\"\"" ) + "; }";
 };
 
-return Compiler;
-
-});
+export default Compiler;

@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * parseProperties( cldr )
  *
@@ -7,10 +5,8 @@ define(function() {
  *
  * Return parser properties.
  */
-return function( cldr ) {
+export default function( cldr ) {
 	return {
 		preferredTimeData: cldr.supplemental.timeData.preferred()
 	};
 };
-
-});

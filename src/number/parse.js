@@ -1,8 +1,6 @@
-define([
-	"../util/regexp/cf-g",
-	"../util/regexp/dash-g",
-	"../util/regexp/zs-g"
-], function( regexpCfG, regexpDashG, regexpZsG ) {
+import regexpCfG from "../util/regexp/cf-g";
+import regexpDashG from "../util/regexp/dash-g";
+import regexpZsG from "../util/regexp/zs-g";
 
 /**
  * parse( value, properties )
@@ -15,7 +13,7 @@ define([
  * Return the parsed Number (including Infinity) or NaN when value is invalid.
  * ref: http://www.unicode.org/reports/tr35/tr35-numbers.html
  */
-return function( value, properties ) {
+export default function( value, properties ) {
 	var grammar, invertedNuDigitsMap, invertedSymbolMap, negative, number, prefix, prefixNSuffix,
 		suffix, tokenizer, valid;
 
@@ -138,5 +136,3 @@ return function( value, properties ) {
 
 	return number;
 };
-
-});

@@ -1,6 +1,4 @@
-define([
-	"./numbering-system"
-], function( numberNumberingSystem ) {
+import numberNumberingSystem from "./numbering-system";
 
 /**
  * Pattern( style )
@@ -9,7 +7,7 @@ define([
  *
  * @cldr [Cldr instance].
  */
-return function( style, cldr ) {
+export default function( style, cldr ) {
 	if ( style !== "decimal" && style !== "percent" ) {
 		throw new Error( "Invalid style" );
 	}
@@ -20,5 +18,3 @@ return function( style, cldr ) {
 		"standard"
 	]);
 };
-
-});

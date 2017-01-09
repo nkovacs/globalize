@@ -1,9 +1,7 @@
-define([
-	"./runtime-key",
-	"../util/function-name"
-], function( runtimeKey, functionName ) {
+import runtimeKey from "./runtime-key";
+import functionName from "../util/function-name";
 
-return function( args, cldr, fn, runtimeArgs ) {
+export default function( args, cldr, fn, runtimeArgs ) {
 
 	var argsStr = JSON.stringify( args ),
 		fnName = functionName( fn ),
@@ -25,5 +23,3 @@ return function( args, cldr, fn, runtimeArgs ) {
 
 	return fn;
 };
-
-});

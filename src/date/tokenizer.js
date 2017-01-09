@@ -1,9 +1,7 @@
-define([
-	"./pattern-re",
-	"../util/regexp/escape",
-	"../util/regexp/n",
-	"../util/remove-literal-quotes"
-], function( datePatternRe, regexpEscape, regexpN, removeLiteralQuotes ) {
+import datePatternRe from "./pattern-re";
+import regexpEscape from "../util/regexp/escape";
+import regexpN from "../util/regexp/n";
+import removeLiteralQuotes from "../util/remove-literal-quotes";
 
 /**
  * tokenizer( value, pattern, properties )
@@ -36,7 +34,7 @@ define([
  *
  * Return an empty Array when not successfully parsed.
  */
-return function( value, numberParser, properties ) {
+export default function( value, numberParser, properties ) {
 	var valid,
 		timeSeparator = properties.timeSeparator,
 		tokens = [],
@@ -404,5 +402,3 @@ return function( value, numberParser, properties ) {
 
 	return valid ? tokens : [];
 };
-
-});

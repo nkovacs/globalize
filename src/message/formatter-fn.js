@@ -1,8 +1,6 @@
-define([
-	"../common/validate/parameter-type/message-variables"
-], function( validateParameterTypeMessageVariables ) {
+import validateParameterTypeMessageVariables from "../common/validate/parameter-type/message-variables";
 
-return function( formatter, shouldCall ) {
+export default function( formatter, shouldCall ) {
 	if ( shouldCall === "call" ) {
 		formatter = formatter.apply( null, [].slice.call( arguments, 2 ) );
 	}
@@ -14,5 +12,3 @@ return function( formatter, shouldCall ) {
 		return formatter( variables );
 	};
 };
-
-});

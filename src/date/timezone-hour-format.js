@@ -1,6 +1,4 @@
-define([
-	"../util/string/pad"
-], function( stringPad ) {
+import stringPad from "../util/string/pad";
 
 /**
  * hourFormat( date, format, timeSeparator, formatNumber )
@@ -11,7 +9,7 @@ define([
  * - "+HHmm;-HHmm": -0300
  * - "+HH:mm;-HH:mm": -03:00
  */
-return function( date, format, timeSeparator, formatNumber ) {
+export default function( date, format, timeSeparator, formatNumber ) {
 	var absOffset,
 		offset = date.getTimezoneOffset();
 
@@ -43,5 +41,3 @@ return function( date, format, timeSeparator, formatNumber ) {
 			return formatNumber[ 2 ]( absOffset % 60 );
 		});
 };
-
-});

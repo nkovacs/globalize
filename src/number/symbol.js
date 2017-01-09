@@ -1,6 +1,4 @@
-define([
-	"./numbering-system"
-], function( numberNumberingSystem ) {
+import numberNumberingSystem from "./numbering-system";
 
 /**
  * Symbol( name, cldr )
@@ -11,11 +9,9 @@ define([
  *
  * Return the localized symbol given its name.
  */
-return function( name, cldr ) {
+export default function( name, cldr ) {
 	return cldr.main([
 		"numbers/symbols-numberSystem-" + numberNumberingSystem( cldr ),
 		name
 	]);
 };
-
-});

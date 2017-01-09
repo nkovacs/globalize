@@ -1,15 +1,13 @@
-define([
-	"./supplemental-override",
-	"../number/numbering-system",
-	"../util/regexp/not-s"
-], function( currencySupplementalOverride, numberNumberingSystem, regexpNotS ) {
+import currencySupplementalOverride from "./supplemental-override";
+import numberNumberingSystem from "../number/numbering-system";
+import regexpNotS from "../util/regexp/not-s";
 
 /**
  * symbolProperties( currency, cldr )
  *
  * Return pattern replacing `¤` with the appropriate currency symbol literal.
  */
-return function( currency, cldr, options ) {
+export default function( currency, cldr, options ) {
 	var currencySpacing, pattern,
 		regexp = {
 			"[:digit:]": /\d/,
@@ -70,5 +68,3 @@ return function( currency, cldr, options ) {
 		pattern: pattern
 	};
 };
-
-});

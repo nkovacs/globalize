@@ -1,5 +1,1 @@
-define(function() {
-
-return [ "sun", "mon", "tue", "wed", "thu", "fri", "sat" ];
-
-});
+export default [ "sun", "mon", "tue", "wed", "thu", "fri", "sat" ];

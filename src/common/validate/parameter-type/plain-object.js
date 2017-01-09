@@ -1,9 +1,7 @@
-define([
-	"../parameter-type",
-	"../../../util/is-plain-object"
-], function( validateParameterType, isPlainObject ) {
+import validateParameterType from "../parameter-type";
+import isPlainObject from "../../../util/is-plain-object";
 
-return function( value, name ) {
+export default function( value, name ) {
 	validateParameterType(
 		value,
 		name,
@@ -11,5 +9,3 @@ return function( value, name ) {
 		"Plain Object"
 	);
 };
-
-});

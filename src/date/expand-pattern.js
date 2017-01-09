@@ -1,7 +1,5 @@
-define([
-	"../common/format-message",
-	"../common/create-error/invalid-parameter-value"
-], function( formatMessage, createErrorInvalidParameterValue ) {
+import formatMessage from "../common/format-message";
+import createErrorInvalidParameterValue from "../common/create-error/invalid-parameter-value";
 
 /**
  * expandPattern( options, cldr )
@@ -25,7 +23,7 @@ define([
  * - { raw: "dd/mm" } returns "dd/mm";
  */
 
-return function( options, cldr ) {
+export default function( options, cldr ) {
 	var dateSkeleton, result, skeleton, timeSkeleton, type;
 
 	function combineDateTime( type, datePattern, timePattern ) {
@@ -99,5 +97,3 @@ return function( options, cldr ) {
 
 	return result;
 };
-
-});

@@ -1,14 +1,10 @@
-define([
-	"./start-of"
-], function( dateStartOf ) {
+import dateStartOf from "./start-of";
 
 /**
  * millisecondsInDay
  */
-return function( date ) {
+export default function( date ) {
 
 	// TODO Handle daylight savings discontinuities
 	return date - dateStartOf( date, "day" );
 };
-
-});

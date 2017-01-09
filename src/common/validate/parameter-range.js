@@ -1,6 +1,4 @@
-define([
-	"../validate"
-], function( validate ) {
+import validate from "../validate";
 
 /**
  * range( value, name, minimum, maximum )
@@ -13,7 +11,7 @@ define([
  *
  * @maximum [Number]. The greatest valid value, inclusive.
  */
-return function( value, name, minimum, maximum ) {
+export default function( value, name, minimum, maximum ) {
 	validate(
 		"E_PAR_OUT_OF_RANGE",
 		"Parameter `{name}` has value `{value}` out of range [{minimum}, {maximum}].",
@@ -26,5 +24,3 @@ return function( value, name, minimum, maximum ) {
 		}
 	);
 };
-
-});

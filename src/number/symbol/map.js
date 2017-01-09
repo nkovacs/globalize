@@ -1,7 +1,5 @@
-define([
-	"./name",
-	"../symbol"
-], function( numberSymbolName, numberSymbol ) {
+import numberSymbolName from "./name";
+import numberSymbol from "../symbol";
 
 /**
  * symbolMap( cldr )
@@ -15,7 +13,7 @@ define([
  *   ...
  * };
  */
-return function( cldr ) {
+export default function( cldr ) {
 	var symbol,
 		symbolMap = {};
 
@@ -25,5 +23,3 @@ return function( cldr ) {
 
 	return symbolMap;
 };
-
-});

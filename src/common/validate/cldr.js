@@ -1,9 +1,7 @@
-define([
-	"../validate",
-	"../../util/always-array"
-], function( validate, alwaysArray ) {
+import validate from "../validate";
+import alwaysArray from "../../util/always-array";
 
-return function( path, value, options ) {
+export default function( path, value, options ) {
 	var skipBoolean;
 	options = options || {};
 
@@ -15,5 +13,3 @@ return function( path, value, options ) {
 		path: path
 	});
 };
-
-});

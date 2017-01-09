@@ -1,11 +1,9 @@
-define([
-	"../common/validate/parameter-presence",
-	"../common/validate/parameter-type/string",
-	"./parse",
-	"./tokenizer"
-], function( validateParameterPresence, validateParameterTypeString, dateParse, dateTokenizer ) {
+import validateParameterPresence from "../common/validate/parameter-presence";
+import validateParameterTypeString from "../common/validate/parameter-type/string";
+import dateParse from "./parse";
+import dateTokenizer from "./tokenizer";
 
-return function( numberParser, parseProperties, tokenizerProperties ) {
+export default function( numberParser, parseProperties, tokenizerProperties ) {
 	return function dateParser( value ) {
 		var tokens;
 
@@ -16,5 +14,3 @@ return function( numberParser, parseProperties, tokenizerProperties ) {
 		return dateParse( value, tokens, parseProperties ) || null;
 	};
 };
-
-});

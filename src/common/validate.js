@@ -1,11 +1,7 @@
-define([
-	"./create-error"
-], function( createError ) {
+import createError from "./create-error";
 
-return function( code, message, check, attributes ) {
+export default function( code, message, check, attributes ) {
 	if ( !check ) {
 		throw createError( code, message, attributes );
 	}
 };
-
-});

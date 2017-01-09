@@ -1,6 +1,4 @@
-define(function() {
-
-return function( str, count, right ) {
+export default function( str, count, right ) {
 	var length;
 	if ( typeof str !== "string" ) {
 		str = String( str );
@@ -10,5 +8,3 @@ return function( str, count, right ) {
 	}
 	return str;
 };
-
-});

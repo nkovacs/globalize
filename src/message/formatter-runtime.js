@@ -1,5 +1,3 @@
-define([], function() {
-
 function Runtime( strictNumberSign ) {
     this.setStrictNumber( strictNumberSign );
 }
@@ -87,6 +85,4 @@ Runtime.prototype.select = function( value, data ) {
   return data.other;
 };
 
-return Runtime;
-
-});
+export default Runtime;

@@ -1,13 +1,11 @@
-define([
-	"../common/format-message"
-], function( formatMessage ) {
+import formatMessage from "../common/format-message";
 
 /**
  * nameFormat( formattedNumber, pluralForm, properties )
  *
  * Return the appropriate name form currency format.
  */
-return function( formattedNumber, pluralForm, properties ) {
+export default function( formattedNumber, pluralForm, properties ) {
 	var displayName, unitPattern,
 		displayNames = properties.displayNames || {},
 		unitPatterns = properties.unitPatterns;
@@ -21,5 +19,3 @@ return function( formattedNumber, pluralForm, properties ) {
 
 	return formatMessage( unitPattern, [ formattedNumber, displayName ]);
 };
-
-});

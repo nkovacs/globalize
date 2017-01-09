@@ -1,10 +1,8 @@
-define([
-	"../common/validate/parameter-presence",
-	"../common/validate/parameter-type/date",
-	"./format"
-], function( validateParameterPresence, validateParameterTypeDate, dateFormat ) {
+import validateParameterPresence from "../common/validate/parameter-presence";
+import validateParameterTypeDate from "../common/validate/parameter-type/date";
+import dateFormat from "./format";
 
-return function( numberFormatters, properties ) {
+export default function( numberFormatters, properties ) {
 	return function dateFormatter( value ) {
 		validateParameterPresence( value, "value" );
 		validateParameterTypeDate( value, "value" );
@@ -13,5 +11,3 @@ return function( numberFormatters, properties ) {
 	};
 
 };
-
-});

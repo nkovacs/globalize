@@ -1,31 +1,26 @@
-define([
-	"./core",
-	"./common/create-error/unsupported-feature",
-	"./common/runtime-bind",
-	"./common/validate/cldr",
-	"./common/validate/default-locale",
-	"./common/validate/parameter-presence",
-	"./common/validate/parameter-range",
-	"./common/validate/parameter-type/number",
-	"./common/validate/parameter-type/plain-object",
-	"./common/validate/parameter-type/string",
-	"./number/formatter-fn",
-	"./number/format-properties",
-	"./number/numbering-system",
-	"./number/parser-fn",
-	"./number/parse-properties",
-	"./number/pattern",
-	"./number/symbol",
-	"./util/remove-literal-quotes",
-	"./util/string/pad",
+import Globalize from "./core";
+import createErrorUnsupportedFeature from "./common/create-error/unsupported-feature";
+import runtimeBind from "./common/runtime-bind";
+import validateCldr from "./common/validate/cldr";
+import validateDefaultLocale from "./common/validate/default-locale";
+import validateParameterPresence from "./common/validate/parameter-presence";
+import validateParameterRange from "./common/validate/parameter-range";
+import validateParameterTypeNumber from "./common/validate/parameter-type/number";
+import validateParameterTypePlainObject from "./common/validate/parameter-type/plain-object";
+import validateParameterTypeString from "./common/validate/parameter-type/string";
+import numberFormatterFn from "./number/formatter-fn";
+import numberFormatProperties from "./number/format-properties";
+import numberNumberingSystem from "./number/numbering-system";
+import numberParserFn from "./number/parser-fn";
+import numberParseProperties from "./number/parse-properties";
+import numberPattern from "./number/pattern";
+import numberSymbol from "./number/symbol";
+import removeLiteralQuotes from "./util/remove-literal-quotes";
+import stringPad from "./util/string/pad";
 
-	"cldr/event",
-	"cldr/supplemental"
-], function( Globalize, createErrorUnsupportedFeature, runtimeBind, validateCldr,
-	validateDefaultLocale, validateParameterPresence, validateParameterRange,
-	validateParameterTypeNumber, validateParameterTypePlainObject, validateParameterTypeString,
-	numberFormatterFn, numberFormatProperties, numberNumberingSystem, numberParserFn,
-	numberParseProperties, numberPattern, numberSymbol, removeLiteralQuotes, stringPad ) {
+import "cldr";
+import "cldr/event";
+import "cldr/supplemental";
 
 function validateDigits( properties ) {
 	var minimumIntegerDigits = properties[ 2 ],
@@ -191,6 +186,4 @@ Globalize._stringPad = stringPad;
 Globalize._validateParameterTypeNumber = validateParameterTypeNumber;
 Globalize._validateParameterTypeString = validateParameterTypeString;
 
-return Globalize;
-
-});
+export default Globalize;

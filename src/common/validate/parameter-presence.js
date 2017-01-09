@@ -1,10 +1,6 @@
-define([
-	"../validate"
-], function( validate ) {
+import validate from "../validate";
 
-return function( value, name ) {
+export default function( value, name ) {
 	validate( "E_MISSING_PARAMETER", "Missing required parameter `{name}`.",
 		value !== undefined, { name: name });
 };
-
-});

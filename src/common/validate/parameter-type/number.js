@@ -1,8 +1,6 @@
-define([
-	"../parameter-type"
-], function( validateParameterType ) {
+import validateParameterType from "../parameter-type";
 
-return function( value, name ) {
+export default function( value, name ) {
 	validateParameterType(
 		value,
 		name,
@@ -10,5 +8,3 @@ return function( value, name ) {
 		"Number"
 	);
 };
-
-});

@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * dayOfWeek( date, firstDay )
  *
@@ -13,8 +11,6 @@ define(function() {
  * - return 1 if territory is US (week starts on "sun");
  * - return 2 if territory is EG (week starts on "sat");
  */
-return function( date, firstDay ) {
+export default function( date, firstDay ) {
 	return ( date.getDay() - firstDay + 7 ) % 7;
 };
-
-});

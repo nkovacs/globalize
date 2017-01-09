@@ -1,13 +1,11 @@
-define([
-	"../always-array"
-], function( alwaysArray ) {
+import alwaysArray from "../always-array";
 
 /**
  * objectOmit( object, keys )
  *
  * Return a copy of the object, filtered to omit the blacklisted key or array of keys.
  */
-return function( object, keys ) {
+export default function( object, keys ) {
 	var key,
 		copy = {};
 
@@ -21,5 +19,3 @@ return function( object, keys ) {
 
 	return copy;
 };
-
-});

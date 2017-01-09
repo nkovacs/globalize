@@ -1,10 +1,7 @@
-define([
-	"./format/grouping-separator",
-	"./format/integer-fraction-digits",
-	"./format/significant-digits",
-	"../util/remove-literal-quotes"
-], function( numberFormatGroupingSeparator, numberFormatIntegerFractionDigits,
-	numberFormatSignificantDigits, removeLiteralQuotes ) {
+import numberFormatGroupingSeparator from "./format/grouping-separator";
+import numberFormatIntegerFractionDigits from "./format/integer-fraction-digits";
+import numberFormatSignificantDigits from "./format/significant-digits";
+import removeLiteralQuotes from "../util/remove-literal-quotes";
 
 /**
  * format( number, properties )
@@ -16,7 +13,7 @@ define([
  * Return the formatted number.
  * ref: http://www.unicode.org/reports/tr35/tr35-numbers.html
  */
-return function( number, properties ) {
+export default function( number, properties ) {
 	var infinitySymbol, maximumFractionDigits, maximumSignificantDigits, minimumFractionDigits,
 	minimumIntegerDigits, minimumSignificantDigits, nanSymbol, nuDigitsMap, padding, prefix,
 	primaryGroupingSize, pattern, ret, round, roundIncrement, secondaryGroupingSize, suffix,
@@ -120,5 +117,3 @@ return function( number, properties ) {
 		return character;
 	});
 };
-
-});

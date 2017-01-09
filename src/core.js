@@ -1,28 +1,24 @@
-define([
-	"cldr",
-	"./common/create-error",
-	"./common/format-message",
-	"./common/runtime-bind",
-	"./common/validate",
-	"./common/validate/cldr",
-	"./common/validate/default-locale",
-	"./common/validate/parameter-presence",
-	"./common/validate/parameter-range",
-	"./common/validate/parameter-type",
-	"./common/validate/parameter-type/locale",
-	"./common/validate/parameter-type/plain-object",
-	"./util/always-array",
-	"./util/always-cldr",
-	"./util/is-plain-object",
-	"./util/object/extend",
-	"./util/regexp/escape",
-	"./util/string/pad",
+import Cldr from "cldr";
 
-	"cldr/event"
-], function( Cldr, createError, formatMessage, runtimeBind, validate, validateCldr,
-	validateDefaultLocale, validateParameterPresence, validateParameterRange, validateParameterType,
-	validateParameterTypeLocale, validateParameterTypePlainObject, alwaysArray, alwaysCldr,
-	isPlainObject, objectExtend, regexpEscape, stringPad ) {
+import createError from "./common/create-error";
+import formatMessage from "./common/format-message";
+import runtimeBind from "./common/runtime-bind";
+import validate from "./common/validate";
+import validateCldr from "./common/validate/cldr";
+import validateDefaultLocale from "./common/validate/default-locale";
+import validateParameterPresence from "./common/validate/parameter-presence";
+import validateParameterRange from "./common/validate/parameter-range";
+import validateParameterType from "./common/validate/parameter-type";
+import validateParameterTypeLocale from "./common/validate/parameter-type/locale";
+import validateParameterTypePlainObject from "./common/validate/parameter-type/plain-object";
+import alwaysArray from "./util/always-array";
+import alwaysCldr from "./util/always-cldr";
+import isPlainObject from "./util/is-plain-object";
+import objectExtend from "./util/object/extend";
+import regexpEscape from "./util/regexp/escape";
+import stringPad from "./util/string/pad";
+
+import "cldr/event";
 
 function validateLikelySubtags( cldr ) {
 	cldr.once( "get", validateCldr );
@@ -111,6 +107,4 @@ Globalize._validateParameterRange = validateParameterRange;
 Globalize._validateParameterTypePlainObject = validateParameterTypePlainObject;
 Globalize._validateParameterType = validateParameterType;
 
-return Globalize;
-
-});
+export default Globalize;

@@ -1,10 +1,8 @@
-define([
-	"../common/validate/parameter-presence",
-	"../common/validate/parameter-type/string",
-	"./parse"
-], function( validateParameterPresence, validateParameterTypeString, numberParse ) {
+import validateParameterPresence from "../common/validate/parameter-presence";
+import validateParameterTypeString from "../common/validate/parameter-type/string";
+import numberParse from "./parse";
 
-return function( properties ) {
+export default function( properties ) {
 	return function numberParser( value ) {
 		validateParameterPresence( value, "value" );
 		validateParameterTypeString( value, "value" );
@@ -13,5 +11,3 @@ return function( properties ) {
 	};
 
 };
-
-});

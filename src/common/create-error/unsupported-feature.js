@@ -1,11 +1,7 @@
-define([
-	"../create-error"
-], function( createError ) {
+import createError from "../create-error";
 
-return function( feature ) {
+export default function( feature ) {
 	return createError( "E_UNSUPPORTED", "Unsupported {feature}.", {
 		feature: feature
 	});
 };
-
-});

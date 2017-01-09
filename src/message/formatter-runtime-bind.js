@@ -1,6 +1,4 @@
-define(function() {
-
-return function( messageformatter, formatterSrc, runtime, pluralType, locale, formatters ) {
+export default function( messageformatter, formatterSrc, runtime, pluralType, locale, formatters ) {
 	var hasFormatters = formatters.length > 0;
 
 	messageformatter.toString = function() {
@@ -34,5 +32,3 @@ return function( messageformatter, formatterSrc, runtime, pluralType, locale, fo
 
 	return messageformatter;
 };
-
-});

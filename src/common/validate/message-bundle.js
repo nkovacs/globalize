@@ -1,8 +1,6 @@
-define([
-	"../validate"
-], function( validate ) {
+import validate from "../validate";
 
-return function( cldr ) {
+export default function( cldr ) {
 	validate(
 		"E_MISSING_MESSAGE_BUNDLE",
 		"Missing message bundle for locale `{locale}`.",
@@ -12,5 +10,3 @@ return function( cldr ) {
 		}
 	);
 };
-
-});

@@ -1,10 +1,6 @@
-define([
-	"../validate"
-], function( validate ) {
+import validate from "../validate";
 
-return function( value ) {
+export default function( value ) {
 	validate( "E_DEFAULT_LOCALE_NOT_DEFINED", "Default locale has not been defined.",
 		value !== undefined, {} );
 };
-
-});

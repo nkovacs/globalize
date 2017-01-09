@@ -1,8 +1,6 @@
-define([
-	"../validate"
-], function( validate ) {
+import validate from "../validate";
 
-return function( path, value ) {
+export default function( path, value ) {
 	path = path.join( "/" );
 	validate(
 		"E_INVALID_MESSAGE",
@@ -14,5 +12,3 @@ return function( path, value ) {
 		}
 	);
 };
-
-});

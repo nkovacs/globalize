@@ -1,12 +1,8 @@
-define([
-	"./week-days"
-], function( dateWeekDays ) {
+import dateWeekDays from "./week-days";
 
 /**
  * firstDayOfWeek
  */
-return function( cldr ) {
+export default function( cldr ) {
 	return dateWeekDays.indexOf( cldr.supplemental.weekData.firstDay() );
 };
-
-});

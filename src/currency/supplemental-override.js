@@ -1,13 +1,11 @@
-define([
-	"../util/string/pad"
-], function( stringPad ) {
+import stringPad from "../util/string/pad";
 
 /**
  * supplementalOverride( currency, pattern, cldr )
  *
  * Return pattern with fraction digits overriden by supplemental currency data.
  */
-return function( currency, pattern, cldr ) {
+export default function( currency, pattern, cldr ) {
 	var digits,
 		fraction = "",
 		fractionData = cldr.supplemental([ "currencyData/fractions", currency ]) ||
@@ -21,5 +19,3 @@ return function( currency, pattern, cldr ) {
 
 	return pattern.replace( /\.(#+|0*[0-9]|0+[0-9]?)/g, fraction );
 };
-
-});

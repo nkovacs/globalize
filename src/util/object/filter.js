@@ -1,6 +1,4 @@
-define(function() {
-
-return function( object, testRe ) {
+export default function( object, testRe ) {
 	var key,
 		copy = {};
 
@@ -12,5 +10,3 @@ return function( object, testRe ) {
 
 	return copy;
 };
-
-});

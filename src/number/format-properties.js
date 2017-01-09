@@ -1,12 +1,9 @@
-define([
-	"./numbering-system-digits-map",
-	"./pattern-properties",
-	"./symbol",
-	"./symbol/map",
-	"./symbol/name",
-	"../util/number/round"
-], function( numberNumberingSystemDigitsMap, numberPatternProperties, numberSymbol, numberSymbolMap,
-	numberSymbolName, numberRound ) {
+import numberNumberingSystemDigitsMap from "./numbering-system-digits-map";
+import numberPatternProperties from "./pattern-properties";
+import numberSymbol from "./symbol";
+import numberSymbolMap from "./symbol/map";
+import numberSymbolName from "./symbol/name";
+import numberRound from "../util/number/round";
 
 /**
  * formatProperties( pattern, cldr [, options] )
@@ -25,7 +22,7 @@ define([
  * Return the processed properties that will be used in number/format.
  * ref: http://www.unicode.org/reports/tr35/tr35-numbers.html
  */
-return function( pattern, cldr, options ) {
+export default function( pattern, cldr, options ) {
 	var negativePattern, negativePrefix, negativeProperties, negativeSuffix, positivePattern,
 		roundFn, properties;
 
@@ -100,5 +97,3 @@ return function( pattern, cldr, options ) {
 	// 19: @nuDigitsMap [Array] Digits map if numbering system is different than `latn`.
 	return properties;
 };
-
-});

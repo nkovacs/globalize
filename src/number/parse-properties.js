@@ -1,15 +1,12 @@
-define([
-	"./format-properties",
-	"./symbol/inverted-map",
-	"../util/always-array",
-	"../util/object/map",
-	"../util/regexp/cf-g",
-	"../util/regexp/dash-g",
-	"../util/regexp/escape",
-	"../util/regexp/zs-g",
-	"../util/remove-literal-quotes"
-], function( numberFormatProperties, numberSymbolInvertedMap, alwaysArray, objectMap, regexpCfG,
-	regexpDashG, regexpEscape, regexpZsG, removeLiteralQuotes ) {
+import numberFormatProperties from "./format-properties";
+import numberSymbolInvertedMap from "./symbol/inverted-map";
+import alwaysArray from "../util/always-array";
+import objectMap from "../util/object/map";
+import regexpCfG from "../util/regexp/cf-g";
+import regexpDashG from "../util/regexp/dash-g";
+import regexpEscape from "../util/regexp/escape";
+import regexpZsG from "../util/regexp/zs-g";
+import removeLiteralQuotes from "../util/remove-literal-quotes";
 
 /**
  * parseProperties( pattern, cldr )
@@ -24,7 +21,7 @@ define([
  * - Scientific_notation;
  * - Padding;
  */
-return function( pattern, cldr, options ) {
+export default function( pattern, cldr, options ) {
 	var aux, decimalSymbolRe, digitsRe, groupingSeparatorRe, infinitySymbol, invertedNuDigitsMap,
 		invertedSymbolMap, maximumFractionDigits, maximumSignificantDigits,
 		minimumSignificantDigits, nanSymbol, negativePrefix, negativeSuffix, nuDigitsMap,
@@ -160,5 +157,3 @@ return function( pattern, cldr, options ) {
 	];
 
 };
-
-});

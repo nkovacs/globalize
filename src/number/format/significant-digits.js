@@ -1,8 +1,6 @@
-define([
-	"../../common/create-error/unsupported-feature",
-	"../../util/number/to-precision",
-	"../../util/string/pad"
-], function( createErrorUnsupportedFeature, numberToPrecision, stringPad ) {
+import createErrorUnsupportedFeature from "../../common/create-error/unsupported-feature";
+import numberToPrecision from "../../util/number/to-precision";
+import stringPad from "../../util/string/pad";
 
 /**
  * toPrecision( number, minimumSignificantDigits, maximumSignificantDigits, round )
@@ -17,7 +15,7 @@ define([
  *
  * Return the formatted significant digits number.
  */
-return function( number, minimumSignificantDigits, maximumSignificantDigits, round ) {
+export default function( number, minimumSignificantDigits, maximumSignificantDigits, round ) {
 	var atMinimum, atMaximum;
 
 	// Sanity check.
@@ -49,5 +47,3 @@ return function( number, minimumSignificantDigits, maximumSignificantDigits, rou
 
 	return number;
 };
-
-});

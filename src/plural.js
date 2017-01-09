@@ -1,23 +1,18 @@
-define([
-	"cldr",
-	"make-plural",
-	"./common/runtime-bind",
-	"./common/validate/cldr",
-	"./common/validate/default-locale",
-	"./common/validate/parameter-presence",
-	"./common/validate/parameter-type",
-	"./common/validate/parameter-type/number",
-	"./common/validate/parameter-type/plain-object",
-	"./common/validate/parameter-type/plural-type",
-	"./core",
-	"./plural/generator-fn",
+import Globalize from "./core";
+import MakePlural from "make-plural/make-plural";
+import runtimeBind from "./common/runtime-bind";
+import validateCldr from "./common/validate/cldr";
+import validateDefaultLocale from "./common/validate/default-locale";
+import validateParameterPresence from "./common/validate/parameter-presence";
+import validateParameterType from "./common/validate/parameter-type";
+import validateParameterTypeNumber from "./common/validate/parameter-type/number";
+import validateParameterTypePlainObject from "./common/validate/parameter-type/plain-object";
+import validateParameterTypePluralType from "./common/validate/parameter-type/plural-type";
+import pluralGeneratorFn from "./plural/generator-fn";
 
-	"cldr/event",
-	"cldr/supplemental"
-], function( Cldr, MakePlural, runtimeBind, validateCldr, validateDefaultLocale,
-	validateParameterPresence, validateParameterType, validateParameterTypeNumber,
-	validateParameterTypePlainObject, validateParameterTypePluralType, Globalize,
-	pluralGeneratorFn ) {
+import "cldr";
+import "cldr/event";
+import "cldr/supplemental";
 
 /**
  * .plural( value )
@@ -94,6 +89,4 @@ Globalize.prototype.pluralGenerator = function( options ) {
 	return returnFn;
 };
 
-return Globalize;
-
-});
+export default Globalize;

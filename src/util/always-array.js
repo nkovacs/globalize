@@ -1,7 +1,3 @@
-define(function() {
-
-return function( stringOrArray ) {
+export default function( stringOrArray ) {
 	return Array.isArray( stringOrArray ) ? stringOrArray : stringOrArray ? [ stringOrArray ] : [];
 };
-
-});

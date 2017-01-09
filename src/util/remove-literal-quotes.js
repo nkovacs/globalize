@@ -1,5 +1,3 @@
-define(function() {
-
 /**
  * removeLiteralQuotes( string )
  *
@@ -9,7 +7,7 @@ define(function() {
  * - `foo` if input string is `foo`, i.e., return the same value in case it isn't a single-quoted
  *   string.
  */
-return function( string ) {
+export default function( string ) {
 	if ( string[ 0 ] + string[ string.length - 1 ] !== "''" ) {
 		return string;
 	}
@@ -18,5 +16,3 @@ return function( string ) {
 	}
 	return string.replace( /''/g, "'" ).slice( 1, -1 );
 };
-
-});

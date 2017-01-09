@@ -1,6 +1,4 @@
-define([
-	"../../util/string/pad"
-], function( stringPad ) {
+import stringPad from "../../util/string/pad";
 
 /**
  * integerFractionDigits( number, minimumIntegerDigits, minimumFractionDigits,
@@ -20,7 +18,7 @@ define([
  *
  * Return the formatted integer and fraction digits.
  */
-return function( number, minimumIntegerDigits, minimumFractionDigits, maximumFractionDigits, round,
+export default function( number, minimumIntegerDigits, minimumFractionDigits, maximumFractionDigits, round,
 	roundIncrement ) {
 
 	// Fraction
@@ -56,5 +54,3 @@ return function( number, minimumIntegerDigits, minimumFractionDigits, maximumFra
 
 	return number;
 };
-
-});

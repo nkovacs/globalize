@@ -1,9 +1,7 @@
-define([
-	"../common/validate/parameter-presence",
-	"../common/validate/parameter-type/number"
-], function( validateParameterPresence, validateParameterTypeNumber ) {
+import validateParameterPresence from "../common/validate/parameter-presence";
+import validateParameterTypeNumber from "../common/validate/parameter-type/number";
 
-return function( plural ) {
+export default function( plural ) {
 	return function pluralGenerator( value, ord ) {
 		validateParameterPresence( value, "value" );
 		validateParameterTypeNumber( value, "value" );
@@ -11,5 +9,3 @@ return function( plural ) {
 		return plural( value, ord );
 	};
 };
-
-});
